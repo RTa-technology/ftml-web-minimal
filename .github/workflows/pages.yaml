@@ -25,7 +25,7 @@ jobs:
         run: pnpm install --no-frozen-lockfile
 
       - name: Build App
-        run: pnpm run compile
+        run: pnpm run compile:vite
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
