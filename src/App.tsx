@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { debounce } from 'ts-debounce';
 import { Container, Grid, Typography, Divider, TextareaAutosize, Paper } from '@mui/material';
-import { Console, Hook, Decode } from 'console-feed'
 
+import LogConsole from './LogConsole';
 import ftmlWorker from './ftml.web.worker.js?bundled-worker&dataurl';
 
 function App() {
@@ -10,8 +10,6 @@ function App() {
   const textAreaRef = useRef(null);
   const ftmlRef = useRef(null);
   const shadowRootRef = useRef(null);
-
-  const [logs, setLogs] = useState([])
 
   const updateStyles = useCallback((styles) => {
     const existingStyles = shadowRootRef.current?.querySelectorAll('[data-dynamic-style]');
@@ -58,12 +56,6 @@ function App() {
     }
   }, []);
 
-  useEffect(() => {
-    Hook(window.console, log => {
-      setLogs(prevLogs => [...prevLogs, Decode(log)])
-    });
-  }, []);
-
   return (
     <Container maxWidth="lg" style={{ marginTop: '2rem' }}>
       <Grid container spacing={3}>
@@ -87,15 +79,8 @@ function App() {
             />
           </Grid>
           <Grid item xs={12}>
-          <Divider />
-            <Typography variant="h6" component="h6">
-              logs
-            </Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <Paper elevation={3} style={{ height: '400px', overflowY: "scroll" }}>
-              <Console logs={logs} variant="dark" />
-            </Paper>
+            <Divider />
+            <LogConsole />
           </Grid>
         </Grid>
     </Container>

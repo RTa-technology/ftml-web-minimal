@@ -15,9 +15,9 @@
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.14.8",
     "console-feed": "^3.5.0",
-    "jquery": ">=1.11.0",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0",
+    "jquery": "^3.7.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-inspector": "^6.0.2",
     "ts-debounce": "^4.0.0"
   },
